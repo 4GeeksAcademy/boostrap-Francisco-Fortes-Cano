@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar bg-light px-3">
+
+        <!-- IZQUIERDA -->
+        <span class="navbar-brand mb-0 h1">
+            <i class="fa-solid fa-camera"></i> Instagram
+        </span>
+
+        <!-- DERECHA -->
+        <div class="d-flex ms-auto">
+
+            <!-- botón verde -->
+            <button class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#postModal">
+                Create a new post
+            </button>
+
+            <!-- botón settings -->
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                    <i class="fa-solid fa-gear"></i>
+                </button>
+
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" href="#">Accessibility</a></li>
+                    <li><a class="dropdown-item text-danger" href="#">Log out</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+    </nav>
+    <div class="container-fluid d-flex justify-content-center my-3">
+
+        <div class="btn-group">
+            <button id="gridBtn" class="btn btn-outline-secondary" onclick="setGrid()">
+                <i class="fa-solid fa-table-cells"></i>
+            </button>
+
+            <button id="listBtn" class="btn btn-outline-secondary" onclick="setList()">
+                <i class="fa-solid fa-square"></i>
+            </button>
+        </div>
+
+    </div>
+    <div id="gallery" class="row">
+        <div class="col-md-4">
+            <img src="https://a.espncdn.com/i/teamlogos/soccer/500/1068.png" class="img-fluid">
+        </div>
+        <div class="col-md-4">
+            <img src="https://objetos.estaticos-marca.com/assets/multimedia/imagenes/2019/04/05/15544807571786.jpg", class="img-fluid">
+        </div>
+        <div class="col-md-4">
+            <img src="https://img.asmedia.epimg.net/resizer/v2/VLPZZT7DX5JWXOB7KBEHPSSFIU.jpg?auth=f4abf32f18d6a8747f28473af8d9cdd359980b25ce7f64107de3146927ce88f4&width=1472&height=1104&smart=true" class="img-fluid">
+        </div>
+        <div class="col-md-4">
+            <img src="https://a.espncdn.com/i/teamlogos/soccer/500/1068.png" class="img-fluid">
+        </div>
+        <div class="col-md-4">
+            <img src="https://a.espncdn.com/i/teamlogos/soccer/500/1068.png" class="img-fluid">
+        </div>
+        <div class="col-md-4">
+            <img src="https://a.espncdn.com/i/teamlogos/soccer/500/1068.png" class="img-fluid">
+        </div>
+    </div>
+
+    <div class="modal fade" id="postModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- HEADER -->
+                <div class="modal-header">
+                    <h5 class="modal-title">Create a new post</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- BODY -->
+                <div class="modal-body">
+
+                    <textarea class="form-control mb-3" placeholder="Add the caption..."></textarea>
+
+                    <button class="btn btn-light">
+                        <i class="fa-solid fa-camera"></i>
+                    </button>
+
+                    <button class="btn btn-light">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </button>
+
+                </div>
+
+                <!-- FOOTER -->
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button class="btn btn-success">Publish</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        const images = [
+            "https://a.espncdn.com/i/teamlogos/soccer/500/1068.png",
+            "https://objetos.estaticos-marca.com/assets/multimedia/imagenes/2019/04/05/15544807571786.jpg",
+            "https://img.asmedia.epimg.net/resizer/v2/VLPZZT7DX5JWXOB7KBEHPSSFIU.jpg?auth=f4abf32f18d6a8747f28473af8d9cdd359980b25ce7f64107de3146927ce88f4&width=1472&height=1104&smart=true",
+            "https://objetos.estaticos-marca.com/assets/multimedia/imagenes/2019/04/05/15544807571786.jpg",
+            "https://objetos.estaticos-marca.com/assets/multimedia/imagenes/2019/04/05/15544807571786.jpg",
+            "https://objetos.estaticos-marca.com/assets/multimedia/imagenes/2019/04/05/15544807571786.jpg"
+
+        ];
+        const posts = [
+            {
+                img: "https://a.espncdn.com/i/teamlogos/soccer/500/1068.png",
+                title: "Atlético de Madrid",
+                likes: "120 Likes",
+                description: "Mejor equipo del mundo",
+                date: "04/03"
+            },
+            {
+                img: "https://objetos.estaticos-marca.com/assets/multimedia/imagenes/2019/04/05/15544807571786.jpg",
+                title: "Gol de Godin",
+                likes: "95 Likes",
+                description: "Este gol nos dio el titulo de La Liga 2013-2014",
+                date: "02/05"
+            },
+            {
+                img: "https://img.asmedia.epimg.net/resizer/v2/VLPZZT7DX5JWXOB7KBEHPSSFIU.jpg?auth=f4abf32f18d6a8747f28473af8d9cdd359980b25ce7f64107de3146927ce88f4&width=1472&height=1104&smart=true",
+                title: "Gol de Griezmann",
+                likes: "200 Likes",
+                description: "Golazo de Griezmann en la champions ante la Roma",
+                date: "01/07"
+            },
+             {
+                img: "https://phantom.estaticos-marca.com/608822f1d23dc0443ebc60f2c34f7856/resize/828/f/jpg/assets/multimedia/imagenes/2021/05/23/16217994093056.jpg",
+                title: "Gol de Godin",
+                likes: "77 Likes",
+                description: "Este gol nos dio el titulo de La Liga 2013-2014",
+                date: "18/09"
+            },
+             {
+                img: "https://objetos.estaticos-marca.com/assets/multimedia/imagenes/2019/03/07/15519661351306.jpg",
+                title: "Suarez celebrando el titulo de liga",
+                likes: "256 Likes",
+                description: "Suarez celebrando el titulo de liga despues de contribuir con 21 goles",
+                date: "23/10"
+            },
+             {
+                img: "https://image-service.onefootball.com/transform?w=280&h=210&dpr=2&image=https%3A%2F%2Fi0.wp.com%2Fwww.atleticosport.es%2Fwp-content%2Fuploads%2F2026%2F02%2FPresentacion-Ademola-Lookman-Atletico-de-Madrid-Estadio-Metropolitano-scaled.jpeg%3Ffit%3D2560%252C1725%26ssl%3D1",
+                title: "Presentación de Lookman",
+                likes: "452 Likes",
+                description: "Lookman siendo presentado como nuevo idolo del Atletico de Madrid",
+                date: "25/12"
+            }
+        ];
+        window.onload = function() {
+  setGrid();
+};
+        function setGrid() {
+            document.getElementById("gridBtn").classList.add("btn-primary");
+            document.getElementById("gridBtn").classList.remove("btn-outline-secondary");
+
+            document.getElementById("listBtn").classList.remove("btn-primary");
+            document.getElementById("listBtn").classList.add("btn-outline-secondary");
+
+            let items = document.querySelectorAll("#gallery > div");
+
+            items.forEach((item, index) => {
+                item.className = "col-md-4 mb-3";
+                item.innerHTML = `
+  <img src="${posts[index].img}" 
+       class="img-fluid w-100" 
+       style="height: 250px; object-fit: contain;">
+`;
+            });
+        }
+
+        function setList() {
+            document.getElementById("listBtn").classList.add("btn-primary");
+            document.getElementById("listBtn").classList.remove("btn-outline-secondary");
+
+            document.getElementById("gridBtn").classList.remove("btn-primary");
+            document.getElementById("gridBtn").classList.add("btn-outline-secondary");
+
+            let items = document.querySelectorAll("#gallery > div");
+
+            items.forEach((item, index) => {
+                item.className = "col-12 mb-3";
+
+                item.innerHTML = `
+<div class="card mx-auto" style="max-width: 500px;">        <div class="card-header d-flex justify-content-between">
+          <strong>${posts[index].title}</strong>
+          <span>${posts[index].date}</span>
+        </div>
+
+        <img src="${posts[index].img}" class="w-100">
+
+        <div class="card-body">
+          <p><strong>${posts[index].likes}</strong></p>
+          <p>${posts[index].description}</p>
+        </div>
+      </div>
+    `;
+            });
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
